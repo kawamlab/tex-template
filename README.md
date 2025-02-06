@@ -1,74 +1,52 @@
-# 日本語論文をLaTeXで書いて、textlintをするためのテンプレート
+# 繊維学部機械ロボット学科用、LaTeXテンプレート
 
-[![Test Docker Image](https://github.com/being24/latex-template-ja/actions/workflows/test.yml/badge.svg)](https://github.com/being24/latex-template-ja/actions/workflows/test.yml)
 [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
 
 
 ## 機能
 
-* 個人環境にLaTeX workshopを構築せず、dockerでビルドします
-* GitHub Actionsを使用してtextlintを実行します
-* github上にreleaseします
-* レジュメや論文用のテンプレートを持ちますが、あくまで個人の環境用に構築したものです
+TeXliveやcloud LaTeX, Overleaf等で使用できるLaTeXテンプレートです。
+upLaTeXとLuaLaTeXに対応しています
+レジュメ用、論文用のclsファイルが用意されており、.latexmkrcを使用してビルドを行います
 
-## 環境
+### VSCodeで運用する場合
 
-* Windows 10 or later
-* macOS 10.14 or later
-* Ubuntu 18.04 LTS or later
+* [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)の使用を前提としています
+* .latexmkrcを使用してビルドを行います
+* .vscode/settings.jsonにはLaTeX Workshopの設定を記述しています
 
-Docker環境が必要ですが、clsファイルについては多少弄ればCloud LaTeX等でも使用できます
-
-* Docker Desktop for Mac 2.1 or later
-* Docker 18.06 or later
-* Docker Desktop for Windows
-
-ghcr.io/being24/latex-docker を使用します  
+dockerでの運用を可能にするために、devcontainer関連の設定ファイルを用意しています
+Docker環境が必要ですが、環境構築の手間を省くことができます
+docker imageとして、ghcr.io/being24/latex-docker を使用します  
 ビルド用のdocker imageは[こちらのリポジトリ](https://github.com/being24/latex-docker)を参照してください
-
-また、VSCodeが必要です
 
 ![demo](example/figures/screenshot.png)
 
+### Overleafで運用する場合
+
+* リポジトリごとzip形式にして各サービスにアップロードしてください
+* upLaTeXを使用する場合は、メニューのコンパイラをLaTeXに、LuaLaTeXを使用する場合はLuaLaTeXに変更してください
+
+### Cloud LaTeXで運用する場合
+
+* リポジトリごとzip形式にしてアップロードしてください
+* .latexmkrcを使用してビルドを行いますので、upLaTeXとLuaLaTeXの切り替えは.latexmkrcを編集してください
+
+### git, GitHubとの連携
+
+データの消失や編集履歴の確認などのために、gitとGitHubを使用することをお勧めします
+このリポジトリはテンプレートリポジトリですので、Use this templateを使用して新しいリポジトリを作成してください
+
 ## 使い方
 
+レジュメ、論文のテンプレートはそれぞれexampleディレクトリに格納されています。
+
+レジュメを作成する場合は、resume_template.texをmain.texに上書きしてください
+論文を作成する場合は、thesis_template.texをmain.texに上書きしてください
+
 使い方やFAQはこの[記事](https://zenn.dev/being/articles/how-to-use-my-latex)にまとめています
+
 
 ## License
 
 CC0
-
-## Author
-
-Being
-
-## config
-
-VSCode上での設定例は[settings.json](.vscode/settings.json)を参照してください
-
-## テンプレートについて
-
-できるだけ現代的な設定を意識して作成したテンプレートですが、LaTeXに詳しいわけではないので誤りがあった場合は教えていただけると幸いです  
-実際の使用時はexample等必要のないファイルは消してください
-
-jlistingの代わりにmintedを使用し、参考文献はbiblatexを使用します
-(mintedは環境によっては使用できないため、コメントアウトしてあります)
-
-### resume.cls
-
-[resume.cls](/classes/resume.cls)は2段組みのレジュメを作成するためのクラスファイルです  
-使用方法は[例](/example/tex/resume_template.tex)を参照してください
-
-### report.cls
-
-[report.cls](/classes/report.cls)は論文を作成するためのクラスファイルです  
-使用方法は[例](/example/tex/report_template.tex)を参照してください
-
-### .vscode/settings.jsonについて
-
-使用しやすい設定を参考程度ですが上げておきます。  
-VSCodeであればこの設定を読み込んでくれるため、設定を変更する必要はありません
-
-## 参考URL
-
-<https://poyo.hatenablog.jp/entry/2020/12/05/110000>
