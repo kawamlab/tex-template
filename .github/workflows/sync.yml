@@ -1,0 +1,32 @@
+name: Sync LaTeX Template Files
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 毎日0時に実行
+  workflow_dispatch:  # 手動実行用
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Files
+        run: |
+          # classes ディレクトリ
+          mkdir -p classes
+          curl -L https://raw.githubusercontent.com/being24/latex-template-ja/main/classes/jreport.cls -o classes/jreport.cls
+          curl -L https://raw.githubusercontent.com/being24/latex-template-ja/main/classes/jsarticle.cls -o classes/jsarticle.cls
+
+          # 設定ファイル類
+          curl -L https://raw.githubusercontent.com/being24/latex-template-ja/main/.latexmkrc -o .latexmkrc
+          curl -L https://raw.githubusercontent.com/being24/latex-template-ja/main/.textlintrc -o .textlintrc
+          curl -L https://raw.githubusercontent.com/being24/latex-template-ja/main/bibliography.bbx -o bibliography.bbx
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git diff --staged --quiet || git commit -m "🔄 Sync LaTeX template files from being24/latex-template-ja"
+          git push
