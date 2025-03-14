@@ -24,6 +24,10 @@ jobs:
           curl -L https://raw.githubusercontent.com/being24/latex-template-ja/master/bibliography.bbx -o bibliography.bbx
           curl -L https://raw.githubusercontent.com/being24/latex-template-ja/master/localSettings.yaml -o localSettings.yaml
 
+          # Node modules
+          curl -L https://raw.githubusercontent.com/being24/latex-template-ja/master/package.json -o package.json
+          curl -L https://raw.githubusercontent.com/being24/latex-template-ja/master/package-lock.json -o package-lock.json
+
       - name: Commit and Push
         run: |
           git config --global user.name 'github-actions[bot]'
