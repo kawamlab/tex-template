@@ -22,6 +22,7 @@ jobs:
           curl -L https://raw.githubusercontent.com/being24/latex-template-ja/master/.latexmkrc -o .latexmkrc
           curl -L https://raw.githubusercontent.com/being24/latex-template-ja/master/.textlintrc -o .textlintrc
           curl -L https://raw.githubusercontent.com/being24/latex-template-ja/master/bibliography.bbx -o bibliography.bbx
+          curl -L https://raw.githubusercontent.com/being24/latex-template-ja/master/localSettings.yaml -o localSettings.yaml
 
       - name: Commit and Push
         run: |
