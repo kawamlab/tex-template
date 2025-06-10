@@ -28,6 +28,10 @@ jobs:
           curl -L https://raw.githubusercontent.com/being24/latex-template-ja/master/package.json -o package.json
           curl -L https://raw.githubusercontent.com/being24/latex-template-ja/master/package-lock.json -o package-lock.json
 
+          # vscode configs
+          curl -L https://raw.githubusercontent.com/being24/latex-template-ja/master/.vscode/settings.json -o .vscode/settings.json
+          curl -L https://raw.githubusercontent.com/being24/latex-template-ja/master/.vscode/extensions.json -o .vscode/extensions.json
+
       - name: Commit and Push
         run: |
           git config --global user.name 'github-actions[bot]'
