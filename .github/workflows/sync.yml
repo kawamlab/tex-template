@@ -1,7 +1,7 @@
 name: Sync LaTeX Template Files
 on:
-  schedule:
-    - cron: '0 0 * * *'  # 毎日0時に実行
+  # schedule:
+    # - cron: '0 0 * * *'  # 毎日0時に実行
   workflow_dispatch:  # 手動実行用
 
 jobs:
