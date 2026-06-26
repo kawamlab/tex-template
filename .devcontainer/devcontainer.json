@@ -8,10 +8,14 @@
 		"vscode": {
 			"extensions": [
 				"James-Yu.latex-workshop",
-				"mhutchie.git-graph",
+				"mhutchie.git-graph"
 			]
 		}
 	},
+	"mounts": [
+		"source=${localEnv:HOME}/.codex,target=/home/ubuntu/.codex,type=bind",
+		"source=${localEnv:HOME}/.claude,target=/home/ubuntu/.claude,type=bind"
+	],
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workdir,type=bind",
 	"workspaceFolder": "/workdir",
 	"postCreateCommand": "bash bin/install_textlint.sh",
